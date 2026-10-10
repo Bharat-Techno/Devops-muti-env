@@ -4,7 +4,6 @@
 
 ### Enterprise CI/CD Pipeline using Jenkins Dynamic Kubernetes Agents, GitHub Actions, GitOps, ArgoCD, Kubernetes, Apache Tomcat, DevSecOps, Observability & Service Mesh
 
-![Architecture](docs/images/architecture.png)
 
 ![GitHub](https://img.shields.io/badge/GitHub-Source-black?logo=github)
 ![Jenkins](https://img.shields.io/badge/Jenkins-CI/CD-red?logo=jenkins)
@@ -89,7 +88,6 @@ Access requests are reviewed and granted upon request.
 
 # Architecture
 
-> Replace with your Architecture Hero Image
 
 ```
 Developer
