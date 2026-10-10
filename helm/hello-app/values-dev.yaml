@@ -1,0 +1,6 @@
+replicaCount: 1
+
+ingress:
+  enabled: true
+  host: dev.192.168.56.100.nip.io
+

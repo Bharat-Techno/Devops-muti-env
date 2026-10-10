@@ -1,0 +1,29 @@
+image:
+  repository: bharatdasa/hello-world
+  tag: 12
+
+replicaCount: 3
+
+ingress:
+  enabled: true
+  host: prod.192.168.56.100.nip.io   # 🔥 FIXED (see below)
+  tls:
+    enabled: true
+    secretName: wildcard-tls
+
+resources:
+  requests:
+    cpu: "300m"
+    memory: "512Mi"
+  limits:
+    cpu: "1000m"
+    memory: "1Gi"
+
+hpa:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  cpu: 70
+
+monitoring:
+  enabled: true

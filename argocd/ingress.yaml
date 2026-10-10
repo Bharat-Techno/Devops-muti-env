@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd
+  namespace: argocd
+
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+  - hosts:
+    - argocd.192.168.56.100.nip.io
+    secretName: wildcard-tls
+
+  rules:
+  - host: argocd.192.168.56.100.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80

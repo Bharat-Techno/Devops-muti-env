@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-app-prod
+  namespace: argocd
+
+spec:
+  project: default
+  revisionHistoryLimit: 5
+
+  source:
+    repoURL: git@github.com:BharatDasa/devops-muti-env.git
+    targetRevision: master
+    path: helm/hello-app
+    helm:
+      valueFiles:
+        - ../../gitops/prod/values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m
+    syncOptions:
+      - CreateNamespace=true

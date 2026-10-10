@@ -1,0 +1,33 @@
+image:
+  repository: bharatdasa/hello-world
+  tag: latest
+
+replicaCount: 2
+
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  host: ""
+  tls:
+    enabled: true
+    secretName: wildcard-tls
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+# 🔥 NEW
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  cpu: 70
+
+monitoring:
+  enabled: true

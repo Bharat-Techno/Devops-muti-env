@@ -1,0 +1,7 @@
+replicaCount: 2
+
+ingress:
+  enabled: true
+  host: staging.192.168.56.100.nip.io
+
+

@@ -1,0 +1,29 @@
+image:
+  repository: bharatdasa/hello-world
+  tag: 8
+
+replicaCount: 2
+
+ingress:
+  enabled: true
+  host: staging.192.168.56.100.nip.io
+  tls:
+    enabled: true
+    secretName: wildcard-tls
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpu: 70
+
+monitoring:
+  enabled: true
